@@ -1,0 +1,5 @@
+flatten = lambda lst: isinstance(lst, (int, str, float, bool)) and [lst] or sum(map(flatten, lst), [])
+lst = [1, [2, 3], 4, [[6, 7]]]
+#print(lst)
+lst = flatten(lst)
+#print(lst)
