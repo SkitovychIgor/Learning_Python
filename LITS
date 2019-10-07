@@ -1,0 +1,31 @@
+#Homework2 check if parenthesis are balanced str = '((((((((((((((2, 3)))))))))))))'
+str = '((((((((((((((2, 3))))))))))))))'
+'''Створюємо лічильники з початковим значенням: 0 '''
+counterOfStr = 0
+counterOfLeftPar = 0
+counterOfRightPar = 0
+'''Проходимо по нашій стрічці str
+    1.якщо знаходимо відкриту дужку то додаємо 1 до загального лічильника відкрито-закрито, 
+    а також до лічильника суто лівих тобто відкритих дужок.
+    2.якщо знаходимо закриту дужку то віднімаємо 1 до загального лічильника відкрито-закрито, 
+    але додаємо 1 до лічильника суто правих тобто закритих дужок.'''
+for figuresOfStr in str:
+    if figuresOfStr == '(':
+        counterOfStr = counterOfStr+1
+        counterOfLeftPar = counterOfLeftPar+1
+    if figuresOfStr == ')':
+        counterOfStr = counterOfStr-1
+        counterOfRightPar = counterOfRightPar+1
+'''Перевіряємо значення загального лічильника:
+    якщо не дорівнює нулю, то кількість лівих правих дужок не збалансована
+    інкаше (коли дорівнює нулю) - збалансована
+    також в разі якщо кількість не збалансована, можна вивести кількість правих та лівих дужок,
+    щоб спростити пошук помилки'''
+leftPar = 'Кількість відкритих дужок: %s '
+rightPar = 'Кількість закритих дужок: %s '
+if counterOfStr != 0:
+    print('Parenthesis are not balanced, please check and try again.')
+    print(leftPar % counterOfLeftPar)
+    print(rightPar % counterOfRightPar)
+else:
+    print('Parenthesis are balanced, good job.')
