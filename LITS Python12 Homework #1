@@ -1,5 +1,9 @@
-flatten = lambda lst: isinstance(lst, (int, str, float, bool)) and [lst] or sum(map(flatten, lst), [])
-lst = [1, [2, 3], 4, [[6, 7]]]
-#print(lst)
-lst = flatten(lst)
-#print(lst)
+def myflat(lst, outlst):
+    for x in lst:    #проходимося по елементах списку lst
+        if isinstance(x, list):    #перевіряємо чи є елемент сам по собі списком
+            myflat(x, outlst)    #якщо є, то перезапускаємо функцію myflat з цим елементом у якості аргумента
+        else:    #якщо елемент не список тобто ми дійшли до кінця підсписку
+            outlst.append(x)    #тоді до списку outlst ми додаємо цей елемент
+    return outlst    #по закінченю for повернути накопичене значення списку outlst
+lst = [[1, [2, [3]], 4, [[[6, 7]]]],5]
+print(myflat(lst,[])) #вивести результат обчислення функції myflat з арг1- список списків, арг2-порожній список
