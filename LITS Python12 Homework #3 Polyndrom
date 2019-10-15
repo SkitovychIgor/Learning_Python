@@ -1,0 +1,11 @@
+def polindrom(stroka):    
+    stroka=list(stroka.upper())
+    adj_stroka = []
+    for i in stroka:
+        if i != ' ':
+            adj_stroka.append(i)           
+    rev_stroka=list(adj_stroka[::-1])
+    if rev_stroka == adj_stroka:
+        print('YES')
+    else:
+        print('NO')
