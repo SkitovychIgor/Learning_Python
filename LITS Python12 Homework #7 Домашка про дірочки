@@ -1,0 +1,16 @@
+#не працювало через порівняння or тому наскоро зробив через словник тимчасово
+
+def count_holes(n):
+    hole_dict = {'1':0,'2':0,'3':0,'4':1,'5':0,'6':1,'7':0,'8':2,'9':1,'0':1}
+    if isinstance(n, (int, str)) == False:
+        print('ERROR')
+        return
+    elif isinstance(n, (str)) == True: 
+        n = abs(int(n))
+    else:
+        n = abs(n)
+    n = str(n)
+    c = 0
+    for i in n:
+        c = c + hole_dict[i]      
+    print(c)
