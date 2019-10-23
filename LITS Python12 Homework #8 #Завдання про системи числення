@@ -1,0 +1,61 @@
+symbols = {0: '0', 1: '1', 2: '2', 3: '3', 4: '4',
+           5: '5', 6: '6', 7: '7', 8: '8', 9: '9',
+           10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E',
+           15: 'F', 16: 'G', 17: 'H', 18: 'I', 19: 'J',
+           20: 'K', 21: 'L', 22: 'M', 23: 'N', 24: 'O',
+           25: 'P', 26: 'Q', 27: 'R', 28: 'S', 29: 'T',
+           30: 'U', 31: 'V', 32: 'W', 33: 'X', 34: 'Y',
+           35: 'Z'}
+
+
+def get_key(symbols, value):
+    for a, b in symbols.items():
+        if b == value:
+            return a
+
+
+def not_more(x):
+    more = 0
+    x3 = str(x)
+    for i in x3:
+        if get_key(symbols, i) >= more:
+            more = get_key(symbols, i)
+    return more
+
+
+def convert_n_to_m(x, n, m):
+    if isinstance(x, (int, str)) is False:
+        print('False')
+    elif not_more(x) >= n:
+        print('False')
+    else:
+        if n != 10:
+            i = len(str(x))
+            temp = 0
+            count = 0
+            x = str(x)
+            for y in x:
+                i -= 1
+                y = get_key(symbols, y)
+                temp += y*(n**i)
+                count += 1
+            x = temp
+            from_ten_to_m(x, m)
+        else:
+            from_ten_to_m(x, m)
+
+
+def from_ten_to_m(x, m):
+    if m == 1:
+        print('0'*x)
+    elif m > 1:
+        x2 = x
+        result = ''
+        while x2 != 0:
+            temp_var = x2 % m
+            x2 = x2 // m
+            result += symbols[temp_var]
+        result = ''.join(reversed(result))
+        print(result)
+    else:
+        print('False')
